@@ -1,0 +1,24 @@
+config:
+  - client:
+      id: "x"
+      eventType: "PAYMENT_EXCEPTION"
+      alert:
+        type: "TUMBLING_WINDOW"
+        count: 5
+        windowSizeInSecs: 10
+      dispatch:
+          - type: "CONSOLE"
+            message: "issue in payment"
+          - type: "EMAIL"
+            subject: "payment exception threshold breached"
+
+  - client:
+      id: "x"
+      eventType: "USER_SERVICE_EXCEPTION"
+      alert:
+        type: "SLIDING_WINDOW"
+        count: 5
+        windowSizeInSecs: 10
+      dispatch:
+        - type: "CONSOLE"
+          message: "issue in user service"
